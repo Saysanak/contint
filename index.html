@@ -180,11 +180,13 @@ section.block{padding-block:clamp(88px,13vw,170px)}
 .step .ph img{width:100%;height:100%;object-fit:cover}
 
 /* One session */
-.session{position:relative}
+.session{position:relative;overflow-x:clip}
 .fan{position:relative;height:clamp(420px,62vw,640px);margin-top:20px}
-.fan .card{position:absolute;left:50%;top:50%;width:clamp(150px,19vw,230px);aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px rgba(0,0,0,.5);transform:translate(-50%,-50%) translateX(var(--x,0)) rotate(var(--r,0deg));transition:transform 1.2s cubic-bezier(.2,.8,.2,1);border:1px solid var(--line)}
+.fan .card{z-index:var(--z,1);position:absolute;left:50%;top:50%;width:clamp(150px,19vw,230px);aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px rgba(0,0,0,.5);transform:translate(-50%,-50%) translateX(var(--x,0)) rotate(var(--r,0deg));transition:transform 1.2s cubic-bezier(.2,.8,.2,1);border:1px solid var(--line)}
 .fan .card img,.fan .card video{width:100%;height:100%;object-fit:cover}
 .fan.open .card{transform:translate(-50%,-50%) translateX(var(--tx)) translateY(var(--ty,0)) rotate(var(--tr))}
+@media(max-width:719px){.fan .card{width:clamp(118px,31vw,150px)}}
+.fan .card.r .tag{left:auto;right:8px}
 .fan .card .tag{position:absolute;left:8px;bottom:8px;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;background:rgba(20,19,17,.7);padding:.3em .55em;border-radius:3px}
 .tally{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:36px}
 .tally div{padding:26px 18px 0 0;display:grid;gap:6px}
@@ -512,12 +514,12 @@ footer a:hover{color:var(--paper)}
         <h2>Vous tournez une fois. <em class="it">Vous publiez toute l'année.</em></h2>
       </div>
       <div class="fan" id="fan" aria-label="Exemple de shorts tirés d'une même session">
-        <div class="card" style="--tx:-232%;--tr:-9deg;--ty:6%"><img src="v/x_advent.jpg" alt="" loading="lazy"><span class="tag">SHORT 01</span></div>
-        <div class="card" style="--tx:-140%;--tr:-5deg;--ty:-2%"><img src="v/x_renner.jpg" alt="" loading="lazy"><span class="tag">SHORT 02</span></div>
-        <div class="card" style="--tx:-52%;--tr:-1.5deg;--ty:-6%"><img src="v/t_temoignage.jpg" alt="" loading="lazy"><span class="tag">TÉMOIGNAGE</span></div>
-        <div class="card" style="--tx:52%;--tr:1.5deg;--ty:-6%"><img src="v/x_advent2.jpg" alt="" loading="lazy"><span class="tag">SHORT 03</span></div>
-        <div class="card" style="--tx:140%;--tr:5deg;--ty:-2%"><img src="v/t_beolet.jpg" alt="" loading="lazy"><span class="tag">SHORT 04</span></div>
-        <div class="card" style="--tx:232%;--tr:9deg;--ty:6%"><img src="v/x_margaux.jpg" alt="" loading="lazy"><span class="tag">VIDÉO LONGUE</span></div>
+        <div class="card" style="--tx:-232%;--tr:-9deg;--ty:6%;--z:1"><img src="v/x_advent.jpg" alt="" loading="lazy"><span class="tag">SHORT 01</span></div>
+        <div class="card" style="--tx:-140%;--tr:-5deg;--ty:-2%;--z:2"><img src="v/x_renner.jpg" alt="" loading="lazy"><span class="tag">SHORT 02</span></div>
+        <div class="card" style="--tx:-52%;--tr:-1.5deg;--ty:-6%;--z:3"><img src="v/t_beolet.jpg" alt="" loading="lazy"><span class="tag">TÉMOIGNAGE</span></div>
+        <div class="card r" style="--tx:52%;--tr:1.5deg;--ty:-6%;--z:3"><img src="v/x_maraz.jpg" alt="" loading="lazy"><span class="tag">SHORT 03</span></div>
+        <div class="card r" style="--tx:140%;--tr:5deg;--ty:-2%;--z:2"><img src="v/x_nakleng.jpg" alt="" loading="lazy"><span class="tag">SHORT 04</span></div>
+        <div class="card r" style="--tx:232%;--tr:9deg;--ty:6%;--z:1"><img src="v/x_margaux.jpg" alt="" loading="lazy"><span class="tag">VIDÉO LONGUE</span></div>
       </div>
       <div class="tally">
         <div><strong data-count="1">1</strong><span>session de tournage</span></div>
@@ -574,10 +576,10 @@ footer a:hover{color:var(--paper)}
       <button class="clip" data-video="v/x_margaux2.mp4" data-title="Margaux Nunez · Love coach"><div class="frame"><video data-src="v/x_margaux2.mp4" poster="v/x_margaux2.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Margaux Nunez</b><span>Love coach · Palace</span></div></button>
       <button class="clip" data-video="v/x_renner.mp4" data-title="Marie-Amélie Renner"><div class="frame"><video data-src="v/x_renner.mp4" poster="v/x_renner.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Marie-Amélie Renner</b><span>Coach · Dame de Fer</span></div></button>
       <button class="clip" data-video="v/x_q7.mp4" data-title="Parnass Groupe"><div class="frame"><video data-src="v/x_q7.mp4" poster="v/x_q7.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Parnass Groupe</b><span>Format entreprise · Dame de Fer</span></div></button>
-      <button class="clip" data-video="v/x_maraz.mp4" data-title="Interview · Palace"><div class="frame"><video data-src="v/x_maraz.mp4" poster="v/x_maraz.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Entrepreneur</b><span>Mode et luxe · Palace</span></div></button>
+      <button class="clip" data-video="v/x_maraz.mp4" data-title="Moustapha Ndiaye · Maraz"><div class="frame"><video data-src="v/x_maraz.mp4" poster="v/x_maraz.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Moustapha Ndiaye</b><span>Fondateur, Maraz · Palace</span></div></button>
       <button class="clip" data-video="v/x_nakleng.mp4" data-title="Anthony Chanthanongsy · NAKLENG studio"><div class="frame"><video data-src="v/x_nakleng.mp4" poster="v/x_nakleng.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Anthony Chanthanongsy</b><span>Fondateur, NAKLENG studio · Dame de Fer</span></div></button>
-      <button class="clip" data-video="v/x_ouinon.mp4" data-title="Parnass Groupe · Oui ou non"><div class="frame"><video data-src="v/x_ouinon.mp4" poster="v/x_ouinon.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Format oui ou non</b><span>Parnass Groupe · Dame de Fer</span></div></button>
-      <button class="clip" data-video="v/x_advent2.mp4" data-title="Thierry Riva · Advent+"><div class="frame"><video data-src="v/x_advent2.mp4" poster="v/x_advent2.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Thierry Riva</b><span>Deuxième extrait, même session</span></div></button>
+      <button class="clip" data-video="v/x_ouinon.mp4" data-title="Charles Jeandupeux · Finance"><div class="frame"><video data-src="v/x_ouinon.mp4" poster="v/x_ouinon.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Charles Jeandupeux</b><span>Finance · Dame de Fer</span></div></button>
+      <button class="clip" data-video="v/x_carmona.mp4" data-title="Jean-Philippe Carmona · You Interim"><div class="frame"><video data-src="v/x_carmona.mp4" poster="v/x_carmona.jpg" muted playsinline loop preload="none" class="auto"></video><span class="play" aria-hidden="true">▶</span></div><div class="cap"><b>Jean-Philippe Carmona</b><span>Fondateur, You Interim · Dame de Fer</span></div></button>
     </div>
   </section>
 
@@ -653,7 +655,7 @@ footer a:hover{color:var(--paper)}
         <h2 style="margin-top:18px">Stéphen Urani</h2>
         <p class="label role"><b>Présentateur · Docteur en philosophie</b></p>
         <p class="bio">Il aborde chaque question comme une perspective à ouvrir.</p>
-        <p class="more">Il valorise un parcours et bouscule les évidences. À ses côtés, vos idées trouvent l'espace pour se raconter. C'est lui qui prépare vos questions, vous coache avant le tournage et mène l'interview.</p>
+        <p class="more">Stéphen valorise un parcours et bouscule les évidences. À ses côtés, vos idées trouvent l'espace pour se raconter. C'est lui qui prépare vos questions, vous coache avant le tournage et mène l'interview.</p>
       </div>
     </div>
   </section>
@@ -826,7 +828,7 @@ footer a:hover{color:var(--paper)}
   const fanAdjust = () => {
     const narrow = innerWidth < 720;
     fan.querySelectorAll('.card').forEach((c,i) => {
-      if(narrow){ c.style.setProperty('--tx', ['-110%','-55%','0%','55%','110%','0%'][i]); }
+      if(narrow){ c.style.setProperty('--tx', ['-150%','-90%','-30%','30%','90%','150%'][i]); }
     });
   };
   fanAdjust();
